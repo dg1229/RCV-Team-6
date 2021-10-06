@@ -4,11 +4,14 @@
   "description": "RCV Project Team 6 - NMDE401",
   "main": "index.js",
   "dependencies": {
+    "express": "^4.17.1",
     "node": "^16.10.0",
     "react": "^17.0.2"
   },
   "devDependencies": {},
   "scripts": {
+    "start": "node ./server/index.js",
+    "build": "cd client && npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
