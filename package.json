@@ -13,10 +13,10 @@
     "nodemon": "^2.0.7"
   },
   "scripts": {
-    "start": "nodemon ./server/index.js",
+    "start": "node ./server/index.js",
     "build": "cd client && npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "cd server && npm start",
+    "server": "cd server && nodemon index.js",
     "client": "cd client && npm start",
     "dev": "concurrently \"npm run server \" \"npm run client\""
   },
