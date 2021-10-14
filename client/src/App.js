@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 import ProgressIndicator from './components/ProgressIndicator/ProgressIndicator';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 function App() {
   const [data, setData] = React.useState(null);
