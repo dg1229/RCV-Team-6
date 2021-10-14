@@ -1,6 +1,6 @@
 import Empty from '../../assets/empty.png';
 import Complete from '../../assets/complete.png';
-import Current from '../../assets/current.png';
+import Current from '../../assets/current.png'; //we should make these svgs - Chase
 
 const ProgressIndicator = (props) => {
   const { completed } = props;
@@ -35,6 +35,14 @@ const ProgressIndicator = (props) => {
     fontFamily: '"IBM Plex Mono", monospace',
     display: 'inline-block',
     fontSize: '15px',
+    marginTop: '5px' 
+    
+
+  }
+
+  const spanStyle ={ //temporary soltution to alignment - Chase
+    verticalAlign: '25%',
+    marginLeft: '8px'
   }
 
   return (
@@ -44,16 +52,17 @@ const ProgressIndicator = (props) => {
       </div>
       <div>
         <span style={statusStyles}>
+
           <img src={completed < 50 ? Current : Complete} alt='status'/>
-          <span>Create Ballot</span>
+          <span style={spanStyle}>Create Ballot</span>
         </span>
         <span style={statusStyles}>
           <img src={completed < 50 ? Empty : completed === 50 ? Current : Complete} alt='status'/>
-          <span>Review</span>
+          <span style={spanStyle}>Review</span>
         </span>
         <span style={statusStyles}>
           <img src={completed <= 50 ? Empty : Current} alt='status'/>
-          <span>Confirmed</span>
+          <span style={spanStyle}>Confirmed</span>
         </span>
       </div>
     </div>
