@@ -42,7 +42,7 @@ const ProgressIndicator = (props) => {
 
   const spanStyle ={ //temporary soltution to alignment - Chase
     verticalAlign: '25%',
-    marginLeft: '8px'
+    marginLeft: '8px',
   }
 
   return (

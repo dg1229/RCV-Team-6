@@ -96,7 +96,7 @@ const Ballot = () => {
                   background: snapshot.isDraggingOver ? 'lightblue' : 'white',
                   padding: 4,
                   height: '650px',
-                  width: '400px'
+                  width: '432px'
                 }}
                 >
                   {column.items.map((item, index) => {
