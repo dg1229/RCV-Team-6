@@ -1,18 +1,24 @@
+import Empty from '../../assets/empty.png'
+import Complete from '../../assets/complete.png'
+import Current from '../../assets/current.png'
+
 const ProgressIndicator = (props) => {
-  const { bgcolor, completed } = props;
+  const { completed } = props;
 
   const containerStyles = {
-    height: 20,
-    width: '100%',
+    height: '5px',
+    width: '40%',
+    left: '30%',
+    top: '20px',
+    position: 'absolute',
     backgroundColor: "#e0e0de",
-    borderRadius: 50,
-    margin: 50
+    borderRadius: 50
   }
 
   const fillerStyles = {
     height: '100%',
     width: `${completed}%`,
-    backgroundColor: bgcolor,
+    backgroundColor: '#2764F6',
     borderRadius: 'inherit',
     textAlign: 'right'
   }
@@ -23,10 +29,31 @@ const ProgressIndicator = (props) => {
     fontWeight: 'bold'
   }
 
+  const statusStyles = {
+    width: '33%',
+    textAlign: 'left',
+    display: 'inline-block',
+    fontSize: '15px'
+  }
+
   return (
     <div style={containerStyles}>
       <div style={fillerStyles}>
-        <span style={labelStyles}>{`${completed}%`}</span>
+        <span style={labelStyles}></span>
+      </div>
+      <div>
+        <span style={statusStyles}>
+          <img src={completed < 50 ? Current : Complete} />
+          <span>Create Ballot</span>
+        </span>
+        <span style={statusStyles}>
+          <img src={completed < 50 ? Empty : completed == 50 ? Current : Complete} />
+          <span>Review</span>
+        </span>
+        <span style={statusStyles}>
+          <img src={completed <= 50 ? Empty : Current} />
+          <span>Confirmed</span>
+        </span>
       </div>
     </div>
   );
