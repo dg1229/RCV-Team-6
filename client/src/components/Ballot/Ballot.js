@@ -93,7 +93,7 @@ const Ballot = () => {
                 {...provided.droppableProps}
                 ref={provided.innerRef}
                 style={{
-                  background: snapshot.isDraggingOver ? 'lightblue' : 'white',
+                  background: snapshot.isDraggingOver ? 'lightblue' : 'white', //colors
                   padding: 4,
                   height: '650px',
                   width: '432px'
