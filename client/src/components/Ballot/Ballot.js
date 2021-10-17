@@ -11,6 +11,32 @@ const ballotStyles = {
   fontFamily: '"IBM Plex Mono", monospace'
 }
 
+const columnStyles = {
+  display: 'flex',
+  justifyContent: 'left',
+  height: '100%',
+  marginTop: '5%',
+  padding: 'auto',
+
+
+}
+/* <div
+
+style={{
+  userSelect: 'none',
+  padding: 16,
+  paddingLeft: 0,
+  height: '12px',
+  width: '400px',
+  borderBottom: '1px lightgray solid',
+
+  color: 'black',
+
+}}
+>
+<span style={{position: 'absolute'}}>CANDIDATES</span>
+</div> */
+
 const itemsFromBackend = [
   { id: uuid(), content: 'Eric L. Adams' },
   { id: uuid(), content: 'Maya D. Wiley' },
@@ -25,7 +51,7 @@ const itemsFromBackend = [
   { id: uuid(), content: 'Paperboy Love Prince' },
   { id: uuid(), content: 'Joycelyn Taylor' },
   { id: uuid(), content: 'Isaac Wright Jr.' },
-  { id: uuid(), content: 'WRITE-IN' }
+  { id: uuid(), content: 'WRITE-IN', value: 'WRITE-IN' }
 ];
 
 const columnsFromBackend =  {
@@ -40,8 +66,34 @@ const columnsFromBackend =  {
   };
 
 const onDragEnd = (result, columns, setColumns) => {
-  if(!result.destination) return;
+
+ 
+  // if({/*Ballot list has 5 item in it*/}) //return
+
+
   const { source, destination } = result;
+
+  const ballotColId = Object.keys(columnsFromBackend)[1];
+  const writeIn = itemsFromBackend[itemsFromBackend.length-1]; //access to write-in candidate
+
+  //console.log(columns[destination.droppableId].items[writeIn.id])
+
+  
+
+
+  if(!result.destination || 
+
+    (result.destination.droppableId === ballotColId && columns[destination.droppableId].items.length >=5) 
+    
+    
+    //!writeIn.value || writeIn.value === 'WRITE-IN' //can't add write-in candidate unless they actually write something in -Chase
+
+    
+    
+    )return;
+
+
+
   if(source.droppableId !== destination.droppableId) {
     const sourceColumn = columns[source.droppableId];
     const destColumn = columns[destination.droppableId];
@@ -73,19 +125,44 @@ const onDragEnd = (result, columns, setColumns) => {
     }
   });
   }
+  
+  
+
 }
+
+
 
 const Ballot = () => {
   const [columns, setColumns] = useState(columnsFromBackend);
 
   return(
   <div style = {ballotStyles}>
+    
     <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumns)}>
       {Object.entries(columns).map(([id, column]) => {
+
         return (
-          <div style={{display: 'flex', justifyContent: 'center', height: '100%', marginTop: '5%', padding: 'auto' }}>
-          <div style={{position: 'absolute'}}>{column.name}</div>
+          
+          <div style={columnStyles}>
+
+            
           <div style={{margin: '20px'}}>
+
+          <div style={{
+              userSelect: 'none',
+              
+              padding: 16,
+              height: '12px',
+              paddingLeft: 0,
+              borderBottom: '1px lightgray solid',
+              marginLeft:'0px',
+              width: '400px',
+              color: 'black',
+          }}
+>
+            <span style={{position: 'absolute'}}>{column.name}</span>
+          </div>
+
           <Droppable droppableId={id} key={id}>
             {(provided, snapshot) => {
               return (
@@ -93,34 +170,41 @@ const Ballot = () => {
                 {...provided.droppableProps}
                 ref={provided.innerRef}
                 style={{
-                  background: snapshot.isDraggingOver ? 'lightblue' : 'white',
+                  background: snapshot.isDraggingOver ? 'white' : 'white', //colors
                   padding: 4,
                   height: '650px',
                   width: '432px'
                 }}
                 >
+
                   {column.items.map((item, index) => {
                     return(
                       <Draggable key={item.id} draggableId={item.id} index={index}>
                         {(provided, snapshot) => {
                           return (
                             <div
+                              
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
                               style={{
                                 userSelect: 'none',
                                 padding: 16,
+                                paddingLeft: 0,
                                 height: '12px',
                                 width: '400px',
                                 borderBottom: '1px lightgray solid',
-                                backgroundColor: snapshot.isDragging ? 'gray' : 'white',
+                                backgroundColor: snapshot.isDragging ? '#FFFFFF80' : 'white',
+                                opacity: snapshot.isDragging ? '.5' : '1',
                                 color: 'black',
                                 ...provided.draggableProps.style
                               }}
                             >
-                              <span style={{position: 'absolute'}}>{item.content}</span>
-                              <img src={Icon} style={{ marginLeft: '90%', height: '10px', marginTop: '1px', marginBottom: '1px' }}/>
+
+                              {column.name === 'YOUR BALLOT' ? <span style = { {paddingRight: '29px'}}>{index+1}.</span> : ''}
+                              {item.content==='WRITE-IN' ? (<input id='writeInForm'onClick = {writeIn} style={{position: 'absolute', cursor:'text'}} placeholder={item.value}/>) : (<span style={{position: 'absolute'}}>{item.content}</span>)}
+                              
+                              <img src={Icon} style={{ marginLeft: 'auto', height: '10px', marginTop: '1px', marginRight:'-8px', marginBottom: '1px',float:'right' }}/>
                             </div>
                           )
                         }}
@@ -144,5 +228,12 @@ const Ballot = () => {
 Ballot.propTypes = {};
 
 Ballot.defaultProps = {};
+
+const writeIn = (e) => {
+
+  console.log(e.target)
+ 
+
+}
 
 export default Ballot;

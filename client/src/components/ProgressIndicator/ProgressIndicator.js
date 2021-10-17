@@ -35,8 +35,7 @@ const ProgressIndicator = (props) => {
     fontFamily: '"IBM Plex Mono", monospace',
     display: 'inline-block',
     fontSize: '15px',
-    marginTop: '5px' 
-    
+    marginTop: '5px', 
 
   }
 
