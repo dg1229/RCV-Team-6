@@ -1,3 +1,4 @@
+import { write } from 'fs';
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import {v4 as uuid} from 'uuid';
@@ -52,8 +53,12 @@ const itemsFromBackend = [
   { id: uuid(), content: 'Paperboy Love Prince' },
   { id: uuid(), content: 'Joycelyn Taylor' },
   { id: uuid(), content: 'Isaac Wright Jr.' },
-  { id: uuid(), content: 'WRITE-IN', value: 'WRITE-IN' }
+  { id: uuid(), content: 'WRITE-IN', value: '' }
 ];
+
+const writeIn = itemsFromBackend[itemsFromBackend.length-1]; //access to write-in candidate
+
+
 
 const columnsFromBackend =  {
     [uuid()]: {
@@ -68,30 +73,20 @@ const columnsFromBackend =  {
 
 const onDragEnd = (result, columns, setColumns) => {
 
- 
-  // if({/*Ballot list has 5 item in it*/}) //return
-
-
   const { source, destination } = result;
 
   const ballotColId = Object.keys(columnsFromBackend)[1];
-  const writeIn = itemsFromBackend[itemsFromBackend.length-1]; //access to write-in candidate
-
-  //console.log(columns[destination.droppableId].items[writeIn.id])
-
-  
-
 
   if(!result.destination || 
 
-    (result.destination.droppableId === ballotColId && columns[destination.droppableId].items.length >=5) 
-    
-    
-    //!writeIn.value || writeIn.value === 'WRITE-IN' //can't add write-in candidate unless they actually write something in -Chase
-
-    
+    (result.destination.droppableId === ballotColId && columns[destination.droppableId].items.length >=5)
     
     )return;
+    
+  if (result.draggableId === writeIn.id && writeIn.value === '' ) return//can't add write-in candidate unless they actually write something in -Chase
+
+    
+  console.log(writeIn.value)    
 
 
 
@@ -134,6 +129,26 @@ const onDragEnd = (result, columns, setColumns) => {
 
 
 const Ballot = () => {
+
+  /* Write-In State Data */
+  const [writeInData,setWriteInData] = useState({
+    candidate:'',
+  })
+
+  /* Write-In State Change */
+  const writeInStateChange = (event) => {
+  const {name, value} = event.target;
+        setWriteInData(prevState=>({
+      ...prevState,
+    candidate: value,
+  }));
+  writeIn.value = writeInData.candidate
+
+  console.log(writeIn)
+  console.log(writeInData)
+  }
+
+
   const [columns, setColumns] = useState(columnsFromBackend);
 
   return(
@@ -203,7 +218,7 @@ const Ballot = () => {
                             >
 
                               {column.name === 'YOUR BALLOT' ? <span style = { {paddingRight: '29px'}}>{index+1}.</span> : ''}
-                              {item.content==='WRITE-IN' ? (<input id='writeInForm'onClick = {writeIn} style={{position: 'absolute', cursor:'text'}} placeholder={item.value}/>) : (<span style={{position: 'absolute'}}>{item.content}</span>)}
+                              {item.content==='WRITE-IN' ? (<input id='writeInForm' onChange = {writeInStateChange} style={{position: 'absolute', cursor:'text'}} placeholder='WRITE-IN' value={writeInData.candidate}/>) : (<span style={{position: 'absolute'}}>{item.content}</span>)}
                               
                               <img src={Icon} style={{ marginLeft: 'auto', height: '10px', marginTop: '1px', marginRight:'-8px', marginBottom: '1px',float:'right' }}/>
                             </div>
@@ -229,15 +244,11 @@ const Ballot = () => {
   );
 };
 
+
+
 Ballot.propTypes = {};
 
 Ballot.defaultProps = {};
 
-const writeIn = (e) => {
-
-  console.log(e.target)
- 
-
-}
 
 export default Ballot;

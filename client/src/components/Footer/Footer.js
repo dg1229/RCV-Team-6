@@ -86,7 +86,6 @@ const editButton = {
 
 function Footer(props) {
 
-    console.log(props)
 
     if(props.page === 'create') {
         
