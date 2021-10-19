@@ -95,28 +95,40 @@ const editButton = {
 
 
 function Footer(props) {
+  let history = useHistory();
+
   if (props.page === 'create' || props.page === '') {
-    /* let history = useHistory();
     const redirctReview = () => {
-      //history.push("/review");
-    } */
+      history.push("/review");
+    }
+
+    const resetReview = () => {
+      history.push("/create");
+    }
 
     return (
       <footer style={footerStyle}>
         <button style={helpButton}><img src={QuestionIcon} alt='question icon' /> HELP</button>
         <button style={languageButton}><img src={LanguageIcon} alt='language icon' /> ENGLISH</button>
-        <button style={reviewButton} /* onClick={redirctReview} */>REVIEW &#8594;</button>
-        <button style={resetChoice}>RESET ALL CHOICES</button>
+        <button style={reviewButton} onClick={redirctReview}>REVIEW &#8594;</button>
+        <button style={resetChoice} onClick={resetReview}>RESET ALL CHOICES</button>
       </footer>
     )
 
 
   } else if (props.page === 'review') {
-    return (
+    const editBallot = () => {
+      history.push("/create");
+    }
 
+    const castBallot = () => {
+      history.push("/submit");
+    }
+
+    return (
       <footer style={footerStyleReview}>
-        <button style={editButton}>RETURN TO EDIT</button>
-        <button style={castButton}>CAST YOUR BALLOT</button>
+        <button style={editButton} onClick={editBallot}>RETURN TO EDIT</button>
+        <button style={castButton} onClick={castBallot}>CAST YOUR BALLOT</button>
       </footer>
 
     )
