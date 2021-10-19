@@ -7,21 +7,21 @@ const app = express();
 
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 
-app.get("/create", (req,res)=>{
+// app.get("/create", (req,res)=>{
 
-    res.json({message:'create your ballot!'})
+//     res.json({message:'create your ballot!'})
 
-})
+// })
 
-app.get("api/review", (req,res)=>{
+// app.get("api/review", (req,res)=>{
 
-    res.json({message:'review your ballot!'})
+//     res.json({message:'review your ballot!'})
 
-})
+// })
 
-app.get("/submit", (req,res) => {
-    res.json({ message: "You are finished!" });
-})
+// app.get("/submit", (req,res) => {
+//     res.json({ message: "You are finished!" });
+// })
 
 
 app.get("/api", (req,res) => {
