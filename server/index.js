@@ -7,21 +7,21 @@ const app = express();
 
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 
-// app.get("/create", (req,res)=>{
+app.get("/create", (req,res)=>{
 
-//     res.json({message:'create your ballot!'})
+    res.sendFile(path.resolve(__dirname, '../public/build', 'index.html'));
 
-// })
+})
 
-// app.get("api/review", (req,res)=>{
+app.get("/review", (req,res)=>{
 
-//     res.json({message:'review your ballot!'})
+    res.sendFile(path.resolve(__dirname, '../public/build', 'index.html'));
 
-// })
+})
 
-// app.get("/submit", (req,res) => {
-//     res.json({ message: "You are finished!" });
-// })
+app.get("/submit", (req,res) => {
+    res.sendFile(path.resolve(__dirname, '../public/build', 'index.html'));
+})
 
 
 app.get("/api", (req,res) => {
