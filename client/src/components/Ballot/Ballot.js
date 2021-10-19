@@ -4,6 +4,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import {v4 as uuid} from 'uuid';
 import Icon from '../../assets/drag-icon.png';
 import Footer from '../Footer/Footer';
+import ProgressIndicator from '../ProgressIndicator/ProgressIndicator';
 
 const ballotStyles = {
   display: 'flex',
@@ -153,6 +154,7 @@ const Ballot = () => {
 
   return(
   <div style = {ballotStyles}>
+    <ProgressIndicator completed="10" />
     
     <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumns)}>
       {Object.entries(columns).map(([id, column]) => {

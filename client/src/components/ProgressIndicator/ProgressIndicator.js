@@ -1,6 +1,6 @@
-import Empty from '../../assets/empty.png';
-import Complete from '../../assets/complete.png';
-import Current from '../../assets/current.png'; //we should make these svgs - Chase
+import Empty from '../../assets/empty.svg';
+import Complete from '../../assets/complete.svg';
+import Current from '../../assets/current.svg';
 
 const ProgressIndicator = (props) => {
   const { completed } = props;
@@ -30,16 +30,25 @@ const ProgressIndicator = (props) => {
   }
 
   const statusStyles = {
-    width: '33%',
+    /* width: '33%', */ //taken out and replaced with margin right - Mililani
     textAlign: 'left',
     fontFamily: '"IBM Plex Mono", monospace',
     display: 'inline-block',
     fontSize: '15px',
-    marginTop: '5px', 
-
+    marginTop: '5px',
+    marginRight: '20%' //in place of width -Mililani
   }
 
-  const spanStyle ={ //temporary soltution to alignment - Chase
+  const statusStylesConfirmed = {
+    textAlign: 'left',
+    fontFamily: '"IBM Plex Mono", monospace',
+    display: 'inline-block',
+    fontSize: '15px',
+    marginTop: '5px',
+    marginLeft: '7%' 
+  }
+
+  const spanStyle = { //temporary soltution to alignment - Chase
     verticalAlign: '25%',
     marginLeft: '8px',
   }
@@ -52,15 +61,15 @@ const ProgressIndicator = (props) => {
       <div>
         <span style={statusStyles}>
 
-          <img src={completed < 50 ? Current : Complete} alt='status'/>
+          <img src={completed < 50 ? Current : Complete} alt='status' />
           <span style={spanStyle}>Create Ballot</span>
         </span>
         <span style={statusStyles}>
-          <img src={completed < 50 ? Empty : completed === 50 ? Current : Complete} alt='status'/>
+          <img src={completed < 50 ? Empty : completed == 50 ? Current : Complete} alt='status' />
           <span style={spanStyle}>Review</span>
         </span>
-        <span style={statusStyles}>
-          <img src={completed <= 50 ? Empty : Current} alt='status'/>
+        <span style={statusStylesConfirmed}>
+          <img src={completed <= 50 ? Empty : Current} alt='status' />
           <span style={spanStyle}>Confirmed</span>
         </span>
       </div>
