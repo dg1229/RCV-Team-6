@@ -1,5 +1,6 @@
 import './App.css';
 import React from 'react';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import ProgressIndicator from './components/ProgressIndicator/ProgressIndicator';
 import Ballot from './components/Ballot/Ballot';
 import QuestionIcon from './assets/question.png';
@@ -97,10 +98,17 @@ function App() {
 
   return (
     <div className="App">
+    <ProgressIndicator completed="10" />
+    <Router>
 
-      <ProgressIndicator completed="10" />
-      <Ballot />
       
+      <Switch>
+                  <Route path='/create' exact render={()=>(<Ballot  />)} />
+                  <Route path='/review' exact render={()=>(<Ballot  />)} />
+                  <Route path='/submit' exact render={()=>(<Ballot  />)} />
+      </Switch>
+
+    </Router>
       <footer style={footerStyle}>
         <button style={helpButton}><img src={QuestionIcon} alt='question icon'/> HELP</button>
         <button style={languageButton}><img src={LanguageIcon} alt='language icon'/> ENGLISH</button>
