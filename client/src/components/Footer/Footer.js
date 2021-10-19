@@ -1,12 +1,8 @@
+
 import React from 'react';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import ProgressIndicator from './components/ProgressIndicator/ProgressIndicator';
-import Ballot from './components/Ballot/Ballot';
-import Review from './components/Review/Review';
-//import Submit from './components/Submit/Submit';
-import Footer from './components/Footer/Footer';
-import QuestionIcon from './assets/question.png';
-import LanguageIcon from './assets/united-states.png';
+
+import QuestionIcon from '../../assets/question.png';
+import LanguageIcon from '../../assets/united-states.png';
 
 
 const reviewButton = {
@@ -88,36 +84,35 @@ const editButton = {
 }
 
 
-function App() {
-  const [data, setData] = React.useState(null);
+function Footer(props) {
 
-  React.useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
+    console.log(props)
 
-
-  return (
-    <div className="App">
-    <ProgressIndicator completed="10" />
-    <Router>
+    if(props.page === 'create') {
+        
+        return (
+      <footer style={footerStyle}>
+        <button style={helpButton}><img src={QuestionIcon} alt='question icon'/> HELP</button>
+        <button style={languageButton}><img src={LanguageIcon} alt='language icon'/> ENGLISH</button>
+        <button style={reviewButton}>REVIEW &#8594;</button>
+        <button style={resetChoice}>RESET ALL CHOICES</button>
+      </footer>
+        ) 
 
       
-      <Switch>
-                  <Route path='/create' exact render={()=>(<Ballot  />)} />
-                  <Route path='/review' exact render={()=>(<Review />)} />
-                  
-                  {/* <Route path='/submit' exact render={()=>(<Submit />)} /> */}
-      </Switch>
+    }else if( props.page === 'review'){
+        return (
 
-    </Router>
+            <footer style={{height: '150px'}}>
+        <button style={editButton}>RETURN TO EDIT</button>
+        <button style={castButton}>CAST YOUR BALLOT</button>
+      </footer> 
 
-
-    
-
-    </div>
-  );
+        )
+    }else if(props.page === 'submit'){
+        return ('');
+    }
 }
 
-export default App;
+export default Footer;
+

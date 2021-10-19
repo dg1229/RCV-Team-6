@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import {v4 as uuid} from 'uuid';
-import Icon from '../../assets/drag-icon.png'
+import Icon from '../../assets/drag-icon.png';
+import Footer from '../Footer/Footer';
 
 const ballotStyles = {
   display: 'flex',
@@ -221,6 +222,9 @@ const Ballot = () => {
         );
       })}
     </DragDropContext>
+
+    <Footer page={'create'}  ></Footer>
+
   </div>
   );
 };
