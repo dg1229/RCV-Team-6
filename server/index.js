@@ -9,18 +9,18 @@ app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 app.get("/create", (req,res)=>{
 
-    res.sendFile(path.resolve(__dirname, '../public/build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 
 })
 
 app.get("/review", (req,res)=>{
 
-    res.sendFile(path.resolve(__dirname, '../public/build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 
 })
 
 app.get("/submit", (req,res) => {
-    res.sendFile(path.resolve(__dirname, '../public/build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 })
 
 
