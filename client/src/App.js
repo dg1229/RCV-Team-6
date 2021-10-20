@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Ballot from './components/Ballot/Ballot';
 import Review from './components/Review/Review';
-<<<<<<< HEAD
 import Submit from './components/Submit/Submit'
 //import Submit from './components/Submit/Submit';
 import Footer from './components/Footer/Footer';
@@ -88,9 +87,6 @@ const editButton = {
   marginRight: "4%"
 }
 
-=======
-import Submit from './components/Submit/Submit';
->>>>>>> d1c16ca37d449a1ca2289155c0c92088b0cf1073
 
 function App() {
   const [data, setData] = React.useState(null);
@@ -104,23 +100,6 @@ function App() {
 
   return (
     <div className="App">
-<<<<<<< HEAD
-    <ProgressIndicator completed="10" />
-    <Router>
-
-      
-      <Switch>
-                  <Route path='/create' exact render={()=>(<Ballot  />)} />
-                  <Route path='/review' exact render={()=>(<Review />)} />
-                  <Route path='/submit' exact render={()=>(<Submit />)} />
-      </Switch>
-
-    </Router>
-
-
-    
-
-=======
       <Router>
         <Switch>
           <Route path='/' exact render={() => (<Ballot />)} />
@@ -129,7 +108,6 @@ function App() {
           <Route path='/submit' exact render={()=>(<Submit />)} />
         </Switch>
       </Router>
->>>>>>> d1c16ca37d449a1ca2289155c0c92088b0cf1073
     </div>
   );
 }
