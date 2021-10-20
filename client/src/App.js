@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Ballot from './components/Ballot/Ballot';
 import Review from './components/Review/Review';
-import Submit from './components/Submit/Submit'
-//import Submit from './components/Submit/Submit';
+import Submit from './components/Submit/Submit';
+import Begin from './components/Begin/Begin'
 import Footer from './components/Footer/Footer';
 import QuestionIcon from './assets/question.png';
 import LanguageIcon from './assets/united-states.png';
@@ -102,7 +102,7 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path='/' exact render={() => (<Ballot />)} />
+          <Route path='/' exact render={() => (<Begin />)} />
           <Route path='/create' exact render={() => (<Ballot />)} />
           <Route path='/review' exact render={() => (<Review />)} />
           <Route path='/submit' exact render={()=>(<Submit />)} />
