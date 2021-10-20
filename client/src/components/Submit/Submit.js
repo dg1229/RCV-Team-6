@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import Footer from '../Footer/Footer';
 import ProgressIndicator from '../ProgressIndicator/ProgressIndicator';
-import VotedImage from '../../assets/voting-image.png';
 
 const centerImage = {
     display: "block",
@@ -32,7 +31,9 @@ const Submit = () => {
         <div >
             <ProgressIndicator completed="100" />
             <div>
-                <img src={VotedImage} style={centerImage} alt='Voted Image'/>
+                <video controls>
+                  <source src="/Videos/Ballot_Confirmation.mp4" type="video/mp4"></source>
+                </video>
                 <h2 style={mainText}>SUCCESS!</h2>
                 <p style={paraText}>YOUR BALLOT HAS BEEN CAST</p>
             </div>
