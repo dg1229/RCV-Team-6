@@ -129,7 +129,7 @@ const onDragEnd = (result, columns, setColumns) => {
 
 
 
-const Ballot = () => {
+const Ballot = (index) => {
 
   /* Write-In State Data */
   const [writeInData,setWriteInData] = useState({
@@ -153,7 +153,7 @@ const Ballot = () => {
   const [columns, setColumns] = useState(columnsFromBackend);
 
   return(
-  <div style = {ballotStyles}>
+  <div key = {{index}} style = {ballotStyles}>
     <ProgressIndicator completed="10" />
     
     <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumns)}>

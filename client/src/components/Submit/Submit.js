@@ -36,7 +36,7 @@ const Submit = () => {
         <div >
             <ProgressIndicator completed="100" />
             <div>
-                <video autoplay="autoplay" muted="muted" style={centerVideo}>
+                <video autoPlay muted="muted" style={centerVideo}>
                   <source src="/Videos/Ballot_Confirmation.mp4" type="video/mp4"></source>
                 </video>
                 <h2 style={mainText}>SUCCESS!</h2>
