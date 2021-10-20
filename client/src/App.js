@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import ProgressIndicator from './components/ProgressIndicator/ProgressIndicator';
 import Ballot from './components/Ballot/Ballot';
 import Review from './components/Review/Review';
+import Submit from './components/Submit/Submit'
 //import Submit from './components/Submit/Submit';
 import Footer from './components/Footer/Footer';
 import QuestionIcon from './assets/question.png';
@@ -107,8 +108,7 @@ function App() {
       <Switch>
                   <Route path='/create' exact render={()=>(<Ballot  />)} />
                   <Route path='/review' exact render={()=>(<Review />)} />
-                  
-                  {/* <Route path='/submit' exact render={()=>(<Submit />)} /> */}
+                  <Route path='/submit' exact render={()=>(<Submit />)} />
       </Switch>
 
     </Router>
