@@ -36,7 +36,7 @@ function Popup() {
       <div style={popup_open}>
         <h1>Player will close after video</h1>
         <video autoPlay style={centerVideo}>
-          <source src="/Videos/Information_Campaign.webm" type="video/webm"></source>
+          <source src="/Videos/HowTo.mp4" type="video/mp4"></source>
         </video>
       </div>  
     </div>  

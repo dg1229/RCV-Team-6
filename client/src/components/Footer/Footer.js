@@ -119,7 +119,7 @@ function Footer(props) {
       setHide(true);
       setTimeout(() => {
         setHide(false)
-      }, 33000);
+      }, 48000);
     }
 
     return (
