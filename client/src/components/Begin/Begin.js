@@ -18,7 +18,8 @@ const Begin = () => {
 
     return (
         <div style={tapToBeginStyle} onClick={beginClick}>
-            <h1 style={{margin: 'auto', width:'50%',lineHeight:'90vh',textAlign:'center'}}>   Tap to begin     </h1>
+            <img src="/Videos/Idle Animation.gif" alt="touch to begin"/>
+            {/* <h1 style={{margin: 'auto', width:'50%',lineHeight:'90vh',textAlign:'center'}}>   Tap to begin     </h1> */}
         </div>
     );
 };

@@ -1,4 +1,3 @@
-import { write } from 'fs';
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import {v4 as uuid} from 'uuid';
@@ -20,25 +19,7 @@ const columnStyles = {
   height: '100%',
   marginTop: '5%',
   padding: 'auto',
-
-
 }
-/* <div
-
-style={{
-  userSelect: 'none',
-  padding: 16,
-  paddingLeft: 0,
-  height: '12px',
-  width: '400px',
-  borderBottom: '1px lightgray solid',
-
-  color: 'black',
-
-}}
->
-<span style={{position: 'absolute'}}>CANDIDATES</span>
-</div> */
 
 const itemsFromBackend = [
   { id: uuid(), content: 'Eric L. Adams' },
@@ -59,8 +40,6 @@ const itemsFromBackend = [
 
 const writeIn = itemsFromBackend[itemsFromBackend.length-1]; //access to write-in candidate
 
-
-
 const columnsFromBackend =  {
     [uuid()]: {
       name: 'CANDIDATES',
@@ -78,18 +57,11 @@ const onDragEnd = (result, columns, setColumns) => {
 
   const ballotColId = Object.keys(columnsFromBackend)[1];
 
-  if(!result.destination || 
-
-    (result.destination.droppableId === ballotColId && columns[destination.droppableId].items.length >=5)
+  if(!result.destination || (result.destination.droppableId === ballotColId && columns[destination.droppableId].items.length >=5))return;
     
-    )return;
-    
-  if (result.draggableId === writeIn.id && writeIn.value === '' ) return//can't add write-in candidate unless they actually write something in -Chase
+  if (result.draggableId === writeIn.id && writeIn.value === '' ) return
 
-    
-  console.log(writeIn.value)    
-
-
+  console.log(writeIn.value)
 
   if(source.droppableId !== destination.droppableId) {
     const sourceColumn = columns[source.droppableId];
@@ -143,10 +115,10 @@ const Ballot = (index) => {
       ...prevState,
     candidate: value,
   }));
+  writeIn.value = '';
   writeIn.value = writeInData.candidate
+  
 
-  console.log(writeIn)
-  console.log(writeInData)
   }
 
 
@@ -162,11 +134,8 @@ const Ballot = (index) => {
         return (
           
           <div style={columnStyles}>
-
-            
-          <div style={{margin: '20px'}}>
-
-          <div style={{
+           <div style={{margin: '20px'}}>
+            <div style={{
               userSelect: 'none',
               
               padding: 16,
@@ -176,24 +145,24 @@ const Ballot = (index) => {
               marginLeft:'0px',
               width: '400px',
               color: 'black',
-          }}
->
+              }}
+            >
             <span style={{position: 'absolute'}}>{column.name}</span>
           </div>
 
-          <Droppable droppableId={id} key={id}>
-            {(provided, snapshot) => {
-              return (
-                <div
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-                style={{
-                  background: snapshot.isDraggingOver ? 'white' : 'white', //colors
-                  padding: 4,
-                  height: '650px',
-                  width: '432px'
-                }}
-                >
+            <Droppable droppableId={id} key={id}>
+              {(provided, snapshot) => {
+                return (
+                  <div
+                    {...provided.droppableProps}
+                    ref={provided.innerRef}
+                    style={{
+                    background: snapshot.isDraggingOver ? 'white' : 'white', //colors
+                    padding: 4,
+                    height: '650px',
+                    width: '432px'
+                   }}
+                  >
 
                   {column.items.map((item, index) => {
                     return(
