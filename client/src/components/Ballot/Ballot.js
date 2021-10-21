@@ -61,7 +61,6 @@ const onDragEnd = (result, columns, setColumns, changeFirst, changeSecond, chang
     
   if (result.draggableId === writeIn.id && writeIn.value === '' ) return
 
-  //console.log(writeIn.value)
 
   if(source.droppableId !== destination.droppableId) {
     const sourceColumn = columns[source.droppableId];
@@ -110,10 +109,13 @@ const Ballot = (props, index) => {
 
   const { changeFirst, changeSecond, changeThird, changeFourth, changeFifth } = props;
 
+  /*Column State Data*/
+  const [columns, setColumns] = useState(columnsFromBackend);
+
   /* Write-In State Data */
-  const [writeInData,setWriteInData] = useState({
+  const [writeInData, setWriteInData] = useState({
     candidate:'',
-  })
+  },)
 
   /* Write-In State Change */
   const writeInStateChange = (event) => {
@@ -123,13 +125,9 @@ const Ballot = (props, index) => {
     candidate: value,
   }));
   writeIn.value = '';
-  writeIn.value = writeInData.candidate
+  writeIn.value = event.target.value
   
-
   }
-
-
-  const [columns, setColumns] = useState(columnsFromBackend);
 
   return(
   <div key = {{index}} style = {ballotStyles}>
@@ -198,7 +196,7 @@ const Ballot = (props, index) => {
                               {column.name === 'YOUR BALLOT' ? <span style = { {paddingRight: '29px'}}>{index+1}.</span> : ''}
                               {item.content==='WRITE-IN' ? (<input id='writeInForm' onChange = {writeInStateChange} style={{position: 'absolute', cursor:'text', fontFamily: '"IBM Plex Mono", monospace'}} placeholder='WRITE-IN' value={writeInData.candidate}/>) : (<span style={{position: 'absolute'}}>{item.content}</span>)}
                               
-                              <img src={Icon} style={{ marginLeft: 'auto', height: '10px', marginTop: '1px', marginRight:'-8px', marginBottom: '1px',float:'right' }}/>
+                              <img alt="icon" src={Icon} style={{ marginLeft: 'auto', height: '10px', marginTop: '1px', marginRight:'-8px', marginBottom: '1px',float:'right' }}/>
                             </div>
                           )
                         }}
