@@ -104,23 +104,23 @@ const [fourthChoice, setFourth] = React.useState(false);
 const [fifthChoice, setFifth] = React.useState(false);
 
 function changeFirst(candidate) {
-  if(candidate){setFirst(candidate.content);}
+  if(candidate){setFirst(candidate.content);}else{setFirst(false)}
 }
 
 function changeSecond(candidate){
-  if(candidate){setSecond(candidate.content);}
+  if(candidate){setSecond(candidate.content);}else{setSecond(false)}
 }
 
 function changeThird(candidate){
-  if(candidate){setThird(candidate.content);}
+  if(candidate){setThird(candidate.content);}else{setThird(false)}
 }
 
 function changeFourth(candidate){
-  if(candidate){setFourth(candidate.content);}
+  if(candidate){setFourth(candidate.content);}else{setFourth(false)}
 }
 
 function changeFifth(candidate){
-  if(candidate){setFifth(candidate.content);}
+  if(candidate){setFifth(candidate.content);}else{setFifth(false)}
 }
 
 
