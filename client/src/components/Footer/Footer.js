@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import { useHistory } from "react-router-dom";
 import { BrowserRouter as Redirect } from 'react-router-dom';
-import QuestionIcon from '../../assets/help.svg';
-import LanguageIcon from '../../assets/english.svg';
+import QuestionIcon from '../../assets/question.png';
+import LanguageIcon from '../../assets/united-states.png';
 import Popup from '../Popup/Popup';
+import Language from '../Language/Language';
 
 
 const reviewButton = {
@@ -104,7 +105,8 @@ const hideButton = {
 function Footer(props) {
   let history = useHistory();
 
-  const [hide, setHide] = useState(false)
+  const [hideVideo, setHideVideo] = useState(false)
+  const [hideLanguage, setHideLanguage] = useState(false)
 
   if (props.page === 'create' || props.page === '') {
     const redirctReview = () => {
@@ -116,17 +118,23 @@ function Footer(props) {
     }
 
     const showVideo = () => {
-      setHide(true);
+      setHideVideo(true);
       setTimeout(() => {
-        setHide(false)
+        setHideVideo(false)
       }, 48000);
+    }
+
+    const showLanguage = () => {
+      setHideLanguage(true);
+
     }
 
     return (
       <footer style={footerStyle}>
-        <button style={helpButton}><img src={QuestionIcon} alt='question icon' onClick={showVideo}/></button>
-        {hide ? <Popup /> : null}
-        <button style={languageButton}><img src={LanguageIcon} alt='language icon' /></button>
+        <button style={helpButton}><img src={QuestionIcon} alt='question icon' onClick={showVideo}/> HELP</button>
+        {hideVideo ? <Popup /> : null}
+        <button style={languageButton}><img src={LanguageIcon} alt='language icon' onClick={showLanguage}/> ENGLISH</button>
+        {hideLanguage ? <Language /> : null}
         <button style={reviewButton} onClick={redirctReview}>REVIEW &#8594;</button>
         <button style={resetChoice} onClick={resetReview}>RESET ALL CHOICES</button>
       </footer>

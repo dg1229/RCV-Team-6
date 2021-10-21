@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Popup() { 
+function Popup(helpClosed) { 
 
     const centerVideo = {
       marginLeft: "10%",
       marginRight: "10%",
       marginBottom: "5%",
-      width: "80%"
+      width: "70%"
     }
 
     const popup = {  
@@ -22,19 +22,30 @@ function Popup() {
       textAlign: "center"
     }  
     const popup_open = {  
+      backgroundColor:'white',
       position: "absolute",
+      width:'619px',
+      height:'471px',
       left: "25%",
       right: "25%",
       top: "25%" ,
       bottom: "25%",
       margin: "auto" ,
-      borderRadius: "20px"
+      borderRadius: "0px"
     }
 
     return (  
     <div style={popup}>  
       <div style={popup_open}>
-        <h1>Player will close after video</h1>
+
+      <div style={{float:'right',margin:'20px'}} onClick={helpClosed}><img src='/xIcon.svg' alt='close'/></div>
+      <br/>
+      <br/>
+      <br/>
+
+
+        <h2 style={{textAlign:'center'}}>NEED HELP?</h2> 
+
         <video autoPlay style={centerVideo}>
           <source src="/Videos/HowTo.mp4" type="video/mp4"></source>
         </video>

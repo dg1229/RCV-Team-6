@@ -104,7 +104,7 @@ function App() {
         <Switch>
           <Route path='/' exact render={() => (<Begin />)} />
           <Route path='/create' exact render={() => (<Ballot />)} />
-          <Route path='/review' exact render={() => (<Review first="Andrew Yang" second="Isaac Wright Jr." third="Joycelyn Taylor" fourth="Shaun Donovan" fifth="Eric L. Adams" />)} />
+          <Route path='/review' exact render={() => (<Review />)} />
           <Route path='/submit' exact render={()=>(<Submit />)} />
         </Switch>
       </Router>
