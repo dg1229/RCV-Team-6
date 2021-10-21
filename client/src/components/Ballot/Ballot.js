@@ -35,7 +35,7 @@ const itemsFromBackend = [
   { id: uuid(), content: 'Paperboy Love Prince' },
   { id: uuid(), content: 'Joycelyn Taylor' },
   { id: uuid(), content: 'Isaac Wright Jr.' },
-  { id: uuid(), content: 'WRITE-IN', value: '' }
+  { id: uuid(), content: '', value: 'WRITE-IN' }
 ];
 
 const writeIn = itemsFromBackend[itemsFromBackend.length-1]; //access to write-in candidate
@@ -59,7 +59,7 @@ const onDragEnd = (result, columns, setColumns, changeFirst, changeSecond, chang
 
   if(!result.destination || (result.destination.droppableId === ballotColId && columns[destination.droppableId].items.length >=5))return;
     
-  if (result.draggableId === writeIn.id && writeIn.value === '' ) return
+  if (result.draggableId === writeIn.id && writeIn.content === '' ) return
 
 
   if(source.droppableId !== destination.droppableId) {
@@ -124,8 +124,8 @@ const Ballot = (props, index) => {
       ...prevState,
     candidate: value,
   }));
-  writeIn.value = '';
-  writeIn.value = event.target.value
+  writeIn.content = '';
+  writeIn.content = event.target.value
   
   }
 
@@ -194,7 +194,7 @@ const Ballot = (props, index) => {
                             >
 
                               {column.name === 'YOUR BALLOT' ? <span style = { {paddingRight: '29px'}}>{index+1}.</span> : ''}
-                              {item.content==='WRITE-IN' ? (<input id='writeInForm' onChange = {writeInStateChange} style={{position: 'absolute', cursor:'text', fontFamily: '"IBM Plex Mono", monospace'}} placeholder='WRITE-IN' value={writeInData.candidate}/>) : (<span style={{position: 'absolute'}}>{item.content}</span>)}
+                              {item.value==='WRITE-IN' ? (<input id='writeInForm' onChange = {writeInStateChange} style={{position: 'absolute', cursor:'text', fontFamily: '"IBM Plex Mono", monospace'}} placeholder='WRITE-IN' value={writeInData.candidate}/>) : (<span style={{position: 'absolute'}}>{item.content}</span>)}
                               
                               <img alt="icon" src={Icon} style={{ marginLeft: 'auto', height: '10px', marginTop: '1px', marginRight:'-8px', marginBottom: '1px',float:'right' }}/>
                             </div>
