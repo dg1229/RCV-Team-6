@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+/* for Opera,webkit chrome browsers */
+input::-webkit-input-placeholder { 
+  font-family: "IBM Plex Mono";
+  color: blue;
+}
+/*firefox 19+ versions*/
+input::-moz-placeholder {
+  color: red;
+}
+/*IE  versions*/
+input::-ms-placeholder {
+  color: red;
+}
+/*Latest modern browsers */
+
+input::placeholder {
+  color: red;
+}

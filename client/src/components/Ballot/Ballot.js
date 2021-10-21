@@ -3,6 +3,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import {v4 as uuid} from 'uuid';
 import Icon from '../../assets/drag-icon.png';
 import Footer from '../Footer/Footer';
+
 import ProgressIndicator from '../ProgressIndicator/ProgressIndicator';
 
 const ballotStyles = {
@@ -194,7 +195,7 @@ const Ballot = (props, index) => {
                             >
 
                               {column.name === 'YOUR BALLOT' ? <span style = { {paddingRight: '29px'}}>{index+1}.</span> : ''}
-                              {item.value==='WRITE-IN' ? (<input id='writeInForm' onChange = {writeInStateChange} style={{position: 'absolute', cursor:'text', fontFamily: '"IBM Plex Mono", monospace'}} placeholder='WRITE-IN' value={writeInData.candidate}/>) : (<span style={{position: 'absolute'}}>{item.content}</span>)}
+                              {item.value==='WRITE-IN' ? (<input id='writeInForm' onChange = {writeInStateChange} style={{position: 'absolute', cursor:'text', fontFamily: '"IBM Plex Mono", monospace',borderStyle:'hidden'}} placeholder='WRITE-IN' value={writeInData.candidate}/>) : (<span style={{position: 'absolute'}}>{item.content}</span>)}
                               
                               <img alt="icon" src={Icon} style={{ marginLeft: 'auto', height: '10px', marginTop: '1px', marginRight:'-8px', marginBottom: '1px',float:'right' }}/>
                             </div>

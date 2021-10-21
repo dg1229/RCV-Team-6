@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +12,27 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* for Opera,webkit chrome browsers */
+input::-webkit-input-placeholder { 
+  letter-spacing: 1px;
+  font-family: "IBM Plex Mono";
+  color: black;
+}
+/*firefox 19+ versions*/
+input::-moz-placeholder {
+  font-family: "IBM Plex Mono";
+  color: black;
+}
+/*IE  versions*/
+input::-ms-placeholder {
+  font-family: "IBM Plex Mono";
+  color: black;
+}
+/*Latest modern browsers */
+
+input::placeholder {
+  font-family: "IBM Plex Mono";
+  color: black;
 }
