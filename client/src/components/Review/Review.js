@@ -8,7 +8,6 @@ const Review = (props) => {
 
   const { first, second, third, fourth, fifth } = props;
 
-  console.log(first)
 
   const columnStyles = {
     display: 'flex',

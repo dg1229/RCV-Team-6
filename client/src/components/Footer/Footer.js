@@ -114,8 +114,7 @@ function Footer(props) {
     }
 
     const resetReview = () => {
-      //history.push("/create");
-      window.location.reload(false);
+      history.push("/create");
     }
 
     const showVideo = () => {
@@ -130,12 +129,23 @@ function Footer(props) {
 
     }
 
+    const closeVideo = () => {
+        console.log('closing video')
+        setHideVideo(false)
+
+    }
+
+    const closeLanguage = () => {
+      setHideLanguage(false);
+
+    }
+
     return (
       <footer style={footerStyle}>
         <button style={helpButton}><img src={QuestionIcon} alt='question icon' onClick={showVideo}/> HELP</button>
-        {hideVideo ? <Popup /> : null}
+        {hideVideo ? <Popup closeVideo={closeVideo}/> : null}
         <button style={languageButton}><img src={LanguageIcon} alt='language icon' onClick={showLanguage}/> ENGLISH</button>
-        {hideLanguage ? <Language /> : null}
+        {hideLanguage ? <Language closeLanguage = {closeLanguage}/> : null}
         <button style={reviewButton} onClick={redirctReview}>REVIEW &#8594;</button>
         <button style={resetChoice} onClick={resetReview}>RESET ALL CHOICES</button>
       </footer>

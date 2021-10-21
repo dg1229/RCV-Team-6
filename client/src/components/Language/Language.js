@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Language(languageClosed,languageChoice,languageChoiceChanged) { 
+function Language(props) { 
 
 
     const popup = {  
@@ -57,7 +57,7 @@ function Language(languageClosed,languageChoice,languageChoiceChanged) {
     return (  
     <div style={popup}>  
       <div style={popup_open}>
-      <div style={{float:'right',margin:'20px'}} onClick={languageClosed}><img src='/xIcon.svg'/></div>
+      <div style={{float:'right',margin:'20px'}} onClick={props.closeLanguage}><img src='/xIcon.svg'/></div>
       <br/>
       <br/>
       <br/>
@@ -65,9 +65,9 @@ function Language(languageClosed,languageChoice,languageChoiceChanged) {
 
         <h2 style={{textAlign:'center'}}>SELECT LANGUAGE:</h2> 
         
-        <button id='englishButton' value='english' selected = {true} style={selectedLanguageButton} onClick={languageChoiceChanged}>ENGLISH</button>
+        <button id='englishButton' value='english' selected = {true} style={selectedLanguageButton} onClick={props.languageChoiceChanged}>ENGLISH</button>
         <br/>
-        <button id='spanishButton' value='spanish' selected = {false} style={languageButton} onClick={languageChoiceChanged}>ESPAÑOL</button>
+        <button id='spanishButton' value='spanish' selected = {false} style={languageButton} onClick={props.languageChoiceChanged}>ESPAÑOL</button>
       </div>  
     </div>  
     );  

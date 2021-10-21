@@ -1,6 +1,8 @@
 import React from 'react';
 
-function Popup(helpClosed) { 
+function Popup(props) { 
+
+  console.log(props)
 
     const centerVideo = {
       marginLeft: "10%",
@@ -38,7 +40,7 @@ function Popup(helpClosed) {
     <div style={popup}>  
       <div style={popup_open}>
 
-      <div style={{float:'right',margin:'20px'}} onClick={helpClosed}><img src='/xIcon.svg' alt='close'/></div>
+      <div style={{float:'right',margin:'20px'}} onClick={props.closeVideo}><img src='/xIcon.svg' alt='close'/></div>
       <br/>
       <br/>
       <br/>
