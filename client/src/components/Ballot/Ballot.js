@@ -51,7 +51,7 @@ const columnsFromBackend =  {
     }
   };
 
-const onDragEnd = (result, columns, setColumns) => {
+const onDragEnd = (result, columns, setColumns, changeFirst, changeSecond, changeThird, changeFourth, changeFifth) => {
 
   const { source, destination } = result;
 
@@ -61,7 +61,7 @@ const onDragEnd = (result, columns, setColumns) => {
     
   if (result.draggableId === writeIn.id && writeIn.value === '' ) return
 
-  console.log(writeIn.value)
+  //console.log(writeIn.value)
 
   if(source.droppableId !== destination.droppableId) {
     const sourceColumn = columns[source.droppableId];
@@ -92,16 +92,23 @@ const onDragEnd = (result, columns, setColumns) => {
       ...column,
       items: copiedItems
     }
-  });
   }
-  
-  
+  );
+}
 
+  changeFirst(columns[ballotColId].items[0]);
+  changeSecond(columns[ballotColId].items[1]);
+  changeThird(columns[ballotColId].items[2]);
+  changeFourth(columns[ballotColId].items[3]);
+  changeFifth(columns[ballotColId].items[4]);
+  console.log("success");
 }
 
 
 
-const Ballot = (index) => {
+const Ballot = (props, index) => {
+
+  const { changeFirst, changeSecond, changeThird, changeFourth, changeFifth } = props;
 
   /* Write-In State Data */
   const [writeInData,setWriteInData] = useState({
@@ -128,7 +135,7 @@ const Ballot = (index) => {
   <div key = {{index}} style = {ballotStyles}>
     <ProgressIndicator completed="10" />
     
-    <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumns)}>
+    <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumns, changeFirst, changeSecond, changeThird, changeFourth, changeFifth)}>
       {Object.entries(columns).map(([id, column]) => {
 
         return (

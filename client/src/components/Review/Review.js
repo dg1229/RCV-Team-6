@@ -43,11 +43,12 @@ const Review = (props) => {
     
     <div style={ballotStyles}>
     <div><b>REVIEW YOUR BALLOT</b></div>
-    <div style={candidateStyles}>1. {first}</div>
-    <div style={candidateStyles}>2. {second}</div>
-    <div style={candidateStyles}>3. {third}</div>
-    <div style={candidateStyles}>4. {fourth}</div>
-    <div style={candidateStyles}>5. {fifth}</div>
+    { first || second || third || fourth || fifth ? null : <div style={candidateStyles}>No Candidates Selected</div>}
+    { first ? <div style={candidateStyles}>1. {first}</div> : null }
+    { second ? <div style={candidateStyles}>2. {second}</div> : null }
+    { third ? <div style={candidateStyles}>3. {third}</div> : null }
+    { fourth ? <div style={candidateStyles}>4. {fourth}</div> : null }
+    { fifth ? <div style={candidateStyles}>5. {fifth}</div> : null }
     </div>
     <Footer page={'review'}  ></Footer>
   </div>
