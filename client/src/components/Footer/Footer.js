@@ -92,7 +92,7 @@ const editButton = {
   color: "#2A64F5",
   marginTop: "4%",
   marginRight: "4%",
-  marginLeft: '36%'
+  marginLeft: '39%'
 }
 
 const hideButton = {
