@@ -35,7 +35,7 @@ const ProgressIndicator = (props) => {
     fontFamily: '"IBM Plex Mono", monospace',
     display: 'inline-block',
     fontSize: '15px',
-    marginTop: '5px',
+    marginTop: '15px',
     marginRight: '20%' //in place of width -Mililani
   }
 
@@ -44,7 +44,7 @@ const ProgressIndicator = (props) => {
     fontFamily: '"IBM Plex Mono", monospace',
     display: 'inline-block',
     fontSize: '15px',
-    marginTop: '5px',
+    marginTop: '15px',
     marginLeft: '7%' 
   }
 

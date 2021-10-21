@@ -189,7 +189,7 @@ const Ballot = (index) => {
                             >
 
                               {column.name === 'YOUR BALLOT' ? <span style = { {paddingRight: '29px'}}>{index+1}.</span> : ''}
-                              {item.content==='WRITE-IN' ? (<input id='writeInForm' onChange = {writeInStateChange} style={{position: 'absolute', cursor:'text'}} placeholder='WRITE-IN' value={writeInData.candidate}/>) : (<span style={{position: 'absolute'}}>{item.content}</span>)}
+                              {item.content==='WRITE-IN' ? (<input id='writeInForm' onChange = {writeInStateChange} style={{position: 'absolute', cursor:'text', fontFamily: '"IBM Plex Mono", monospace'}} placeholder='WRITE-IN' value={writeInData.candidate}/>) : (<span style={{position: 'absolute'}}>{item.content}</span>)}
                               
                               <img src={Icon} style={{ marginLeft: 'auto', height: '10px', marginTop: '1px', marginRight:'-8px', marginBottom: '1px',float:'right' }}/>
                             </div>
