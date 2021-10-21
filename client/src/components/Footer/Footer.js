@@ -112,7 +112,8 @@ function Footer(props) {
     }
 
     const resetReview = () => {
-      history.push("/create");
+      //history.push("/create");
+      window.location.reload(false);
     }
 
     const showVideo = () => {
