@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { BrowserRouter as Redirect } from 'react-router-dom';
 import QuestionIcon from '../../assets/question.png';
 import LanguageIcon from '../../assets/united-states.png';
+import Popup from '../Popup/Popup';
 
 
 const reviewButton = {
@@ -106,9 +107,14 @@ function Footer(props) {
       history.push("/create");
     }
 
+    const showHelp = () => {
+
+    }
+
     return (
       <footer style={footerStyle}>
-        <button style={helpButton}><img src={QuestionIcon} alt='question icon' /> HELP</button>
+        <button style={helpButton}><img src={QuestionIcon} alt='question icon' onClick={showHelp}/> HELP</button>
+        <Popup />
         <button style={languageButton}><img src={LanguageIcon} alt='language icon' /> ENGLISH</button>
         <button style={reviewButton} onClick={redirctReview}>REVIEW &#8594;</button>
         <button style={resetChoice} onClick={resetReview}>RESET ALL CHOICES</button>
