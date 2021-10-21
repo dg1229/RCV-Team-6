@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import { useHistory } from "react-router-dom";
 import { BrowserRouter as Redirect } from 'react-router-dom';
-import QuestionIcon from '../../assets/question.png';
-import LanguageIcon from '../../assets/united-states.png';
+import QuestionIcon from '../../assets/help.svg';
+import LanguageIcon from '../../assets/english.svg';
 import Popup from '../Popup/Popup';
 import Language from '../Language/Language';
 
@@ -142,9 +142,9 @@ function Footer(props) {
 
     return (
       <footer style={footerStyle}>
-        <button style={helpButton}><img src={QuestionIcon} alt='question icon' onClick={showVideo}/> HELP</button>
+        <img src={QuestionIcon} style={helpButton} alt='question icon' onClick={showVideo}/>
         {hideVideo ? <Popup closeVideo={closeVideo}/> : null}
-        <button style={languageButton}><img src={LanguageIcon} alt='language icon' onClick={showLanguage}/> ENGLISH</button>
+        <img src={LanguageIcon} style={languageButton} alt='language icon' onClick={showLanguage}/>
         {hideLanguage ? <Language closeLanguage = {closeLanguage}/> : null}
         <button style={reviewButton} onClick={redirctReview}>REVIEW &#8594;</button>
         <button style={resetChoice} onClick={resetReview}>RESET ALL CHOICES</button>
