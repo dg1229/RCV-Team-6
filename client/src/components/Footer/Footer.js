@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useHistory } from "react-router-dom";
 import { BrowserRouter as Redirect } from 'react-router-dom';
 import QuestionIcon from '../../assets/question.png';
@@ -94,9 +94,17 @@ const editButton = {
   marginLeft: '36%'
 }
 
+const hideButton = {
+  position: "fixed",
+  width: "25%",
+  marginLeft: "25%"
+}
+
 
 function Footer(props) {
   let history = useHistory();
+
+  const [hide, setHide] = useState(false)
 
   if (props.page === 'create' || props.page === '') {
     const redirctReview = () => {
@@ -107,14 +115,17 @@ function Footer(props) {
       history.push("/create");
     }
 
-    const showHelp = () => {
-
+    const showVideo = () => {
+      setHide(true);
+      setTimeout(() => {
+        setHide(false)
+      }, 33000);
     }
 
     return (
       <footer style={footerStyle}>
-        <button style={helpButton}><img src={QuestionIcon} alt='question icon' onClick={showHelp}/> HELP</button>
-        <Popup />
+        <button style={helpButton}><img src={QuestionIcon} alt='question icon' onClick={showVideo}/> HELP</button>
+        {hide ? <Popup /> : null}
         <button style={languageButton}><img src={LanguageIcon} alt='language icon' /> ENGLISH</button>
         <button style={reviewButton} onClick={redirctReview}>REVIEW &#8594;</button>
         <button style={resetChoice} onClick={resetReview}>RESET ALL CHOICES</button>

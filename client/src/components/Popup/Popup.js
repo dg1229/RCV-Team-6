@@ -1,15 +1,14 @@
-import React from 'react';  
-import '../../App.css';  
+import React from 'react';
+
 function Popup() { 
+
     const centerVideo = {
-      display: "block",
-      marginLeft: "auto",
-      marginRight: "auto",
-      textAlign: "center",
-      width: "75%",
-      height: "auto"
+      marginLeft: "10%",
+      marginRight: "10%",
+      marginBottom: "5%",
+      width: "80%"
     }
-    
+
     const popup = {  
       position: "fixed",
       width: "100%" , 
@@ -19,7 +18,8 @@ function Popup() {
       right: "0",
       bottom: "0", 
       margin: "auto",
-      backgroundColor: "rgba(0,0,0, 0.5)"
+      backgroundColor: "rgba(0,0,0, 0.5)",
+      textAlign: "center"
     }  
     const popup_open = {  
       position: "absolute",
@@ -28,16 +28,15 @@ function Popup() {
       top: "25%" ,
       bottom: "25%",
       margin: "auto" ,
-      borderRadius: "20px",  
-      background: "white" 
+      borderRadius: "20px"
     }
 
     return (  
     <div style={popup}>  
       <div style={popup_open}>
-        <h1>Click 'help' again to close player</h1>
-        <video autoPlay muted="muted" style={centerVideo}>
-          <source src="/Videos/Help.mp4" type="video/mp4"></source>
+        <h1>Player will close after video</h1>
+        <video autoPlay style={centerVideo}>
+          <source src="/Videos/Information_Campaign.webm" type="video/webm"></source>
         </video>
       </div>  
     </div>  
