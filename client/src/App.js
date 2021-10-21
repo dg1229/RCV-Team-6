@@ -97,14 +97,40 @@ function App() {
       .then((data) => setData(data.message));
   }, []);
 
+  const [firstChoice, setFirst] = React.useState(false);
+const [secondChoice, setSecond] = React.useState(false);
+const [thirdChoice, setThird] = React.useState(false);
+const [fourthChoice, setFourth] = React.useState(false);
+const [fifthChoice, setFifth] = React.useState(false);
+
+function changeFirst(candidate) {
+  if(candidate){setFirst(candidate.content);}
+}
+
+function changeSecond(candidate){
+  if(candidate){setSecond(candidate.content);}
+}
+
+function changeThird(candidate){
+  if(candidate){setThird(candidate.content);}
+}
+
+function changeFourth(candidate){
+  if(candidate){setFourth(candidate.content);}
+}
+
+function changeFifth(candidate){
+  if(candidate){setFifth(candidate.content);}
+}
+
 
   return (
     <div className="App">
       <Router>
         <Switch>
           <Route path='/' exact render={() => (<Begin />)} />
-          <Route path='/create' exact render={() => (<Ballot />)} />
-          <Route path='/review' exact render={() => (<Review first="Andrew Yang" second="Isaac Wright Jr." third="Joycelyn Taylor" fourth="Shaun Donovan" fifth="Eric L. Adams" />)} />
+          <Route path='/create' exact render={() => (<Ballot changeFirst={changeFirst} changeSecond={changeSecond} changeThird={changeThird} changeFourth={changeFourth} changeFifth={changeFifth} />)} />
+          <Route path='/review' exact render={() => (<Review first={firstChoice} second={secondChoice} third={thirdChoice} fourth={fourthChoice} fifth={fifthChoice} />)} />
           <Route path='/submit' exact render={()=>(<Submit />)} />
         </Switch>
       </Router>
